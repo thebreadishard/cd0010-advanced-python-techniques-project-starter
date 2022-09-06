@@ -60,7 +60,7 @@ class NearEarthObject:
             self.hazardous = False
 
         # Create an empty initial collection of linked approaches.
-        self.approaches = approaches
+        self.approaches = []
 
     @property
     def fullname(self):
