@@ -50,9 +50,10 @@ class NEODatabase:
 
         # TODO: Link together the NEOs and their close approaches.
 
-        for approach in approaches:
-            approach.neo = self.__neos_by_designation
-            neos['designation'].approaches.append(approach)
+        for approach in self._approaches:
+            neo = self.__neos_by_designation[approach._designation]
+            approach.neo = neo
+            neo.approaches.append(approach)
 
     def get_neo_by_designation(self, designation):
         """Find and return an NEO by its primary designation.
@@ -68,7 +69,7 @@ class NEODatabase:
         :return: The `NearEarthObject` with the desired primary designation, or `None`.
         """
         # TODO: Fetch an NEO by its primary designation.
-        return self.__str__ if self.designation in neos else None
+        return self.__neos_by_designation.get(designation)
 
     def get_neo_by_name(self, name):
         """Find and return an NEO by its name.
