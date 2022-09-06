@@ -51,6 +51,6 @@ def load_approaches(cad_json_path):
         for record in data['data']:
             # print(record)
             # break
-            approach = CloseApproach(record[1], record[3], record[4])
+            approach = CloseApproach(record[0], record[3], record[4], float(record[7]))
             approaches.append(approach)
     return approaches
