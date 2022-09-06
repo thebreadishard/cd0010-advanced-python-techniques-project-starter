@@ -86,7 +86,7 @@ class NEODatabase:
         :return: The `NearEarthObject` with the desired name, or `None`.
         """
         # TODO: Fetch an NEO by its name.
-        return neo.__str__ if neo.name in neos else None
+        return self.__str__ if self.__str__ else None
 
     def query(self, filters=()):
         """Query close approaches to generate those that match a collection of filters.
