@@ -109,6 +109,16 @@ def create_filters(
     :return: A collection of filters for use with `query`.
     """
     # TODO: Decide how you will represent your filters.
+    class MaxDistanceFilter(AttributeFilter):
+        @classmethod
+        def get(cls, approach):
+            return approach['dist_max']
+
+    class MinDistanceFilter(AttributeFilter):
+        @classmethod
+        def get(cls, approach):
+            return approach['dist_min']
+
     return ()
 
 
