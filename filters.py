@@ -109,17 +109,52 @@ def create_filters(
     :return: A collection of filters for use with `query`.
     """
     # TODO: Decide how you will represent your filters.
-    class MaxDistanceFilter(AttributeFilter):
+    class DateFilter(AttributeFilter):
         @classmethod
         def get(cls, approach):
-            return approach['dist_max']
+            return approach.date
 
-    class MinDistanceFilter(AttributeFilter):
+    class DistanceFilter(AttributeFilter):
         @classmethod
         def get(cls, approach):
-            return approach['dist_min']
+            return approach.distance
 
-    return ()
+    class VelocityFilter(AttributeFilter):
+        @classmethod
+        def get(cls, approach):
+            return approach.velocity
+
+    filters = []
+
+    if date is not None:
+        filter = DateFilter(operator.eq, date)
+        filters.append(filter)
+
+    if start_date is not None:
+        filter = DateFilter(operator.ge, date)
+        filters.append(filter)
+
+    if end_date is not None:
+        filter = DateFilter(operator.le, date)
+        filters.append(filter)
+
+    if distance_min is not None:
+       filter = DistanceFilter(operator.ge, distance_min)
+       filters.append(filter)
+
+    if distance_max is not None:
+        filter = DistanceFilter(operator.le, distance_max)
+        filters.append(filter)
+
+    if velocity_min is not None:
+       filter = VelocityFilter(operator.ge, velocity_min)
+       filters.append(filter)
+
+    if velocity_max is not None:
+        filter = VelocityFilter(operator.le, velocity_max)
+        filters.append(filter)
+
+    return filters
 
 
 def limit(iterator, n=None):
