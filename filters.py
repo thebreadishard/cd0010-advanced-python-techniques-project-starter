@@ -17,6 +17,7 @@ iterator.
 You'll edit this file in Tasks 3a and 3c.
 """
 import operator
+import itertools
 
 
 class UnsupportedCriterionError(NotImplementedError):
@@ -72,26 +73,31 @@ class AttributeFilter:
         return f"{self.__class__.__name__}(op=operator.{self.op.__name__}, value={self.value})"
 
 class DateFilter(AttributeFilter):
+    """A subclass for filters on dates."""
     @classmethod
     def get(cls, approach):
         return approach.time.date()
 
 class DistanceFilter(AttributeFilter):
+    """A subclass for filters on distance."""
     @classmethod
     def get(cls, approach):
         return approach.distance
 
 class VelocityFilter(AttributeFilter):
+    """A subclass for filters on velocity."""
     @classmethod
     def get(cls, approach):
         return approach.velocity
 
 class DiameterFilter(AttributeFilter):
+    """A subclass for filters on diameter."""
     @classmethod
     def get(cls, approach):
         return approach.neo.diameter
 
 class HazardousFilter(AttributeFilter):
+    """A subclass for the filter on hazardous."""
     @classmethod
     def get(cls, approach):
         return approach.neo.hazardous
@@ -190,4 +196,6 @@ def limit(iterator, n=None):
     :yield: The first (at most) `n` values from the iterator.
     """
     # TODO: Produce at most `n` values from the given iterator.
+    if not n == 0 and n is not None:
+        itertools.islice(iterator, 0, n)
     return iterator
