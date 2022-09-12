@@ -34,7 +34,15 @@ def write_to_csv(results, filename):
         writer = csv.DictWriter(outfile, fieldnames)
         writer.writeheader()
         for result in results:
-            writer.writerow(result)
+            writer.writerow({
+                'datetime_utc': result.time_str,
+                'distance_au': result.distance,
+                'velocity_km_s': result.velocity,
+                'designation': result.neo.designation,
+                'name': result.neo.name,
+                'diameter_km': result.neo.diameter,
+                'potentially_hazardous': result.neo.hazardous
+            })
 
 def write_to_json(results, filename):
     """Write an iterable of `CloseApproach` objects to a JSON file.
