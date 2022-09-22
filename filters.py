@@ -71,6 +71,7 @@ class AttributeFilter:
         raise UnsupportedCriterionError
 
     def __repr__(self):
+        """Return `repr(self)`, a computer-readable string representation of this object."""
         return f"{self.__class__.__name__}(op=operator.{self.op.__name__}, value={self.value})"
 
 
@@ -79,7 +80,7 @@ class DateFilter(AttributeFilter):
 
     @classmethod
     def get(cls, approach):
-        """Getting the date at the time of the approach."""
+        """Get the date at the time of the approach."""
         return approach.time.date()
 
 
@@ -88,7 +89,7 @@ class DistanceFilter(AttributeFilter):
 
     @classmethod
     def get(cls, approach):
-        """Getting the distance at the time of the approach."""
+        """Get the distance at the time of the approach."""
         return approach.distance
 
 
@@ -97,7 +98,7 @@ class VelocityFilter(AttributeFilter):
 
     @classmethod
     def get(cls, approach):
-        """Getting the velocity at the time of the approach."""
+        """Get the velocity at the time of the approach."""
         return approach.velocity
 
 
@@ -106,7 +107,7 @@ class DiameterFilter(AttributeFilter):
 
     @classmethod
     def get(cls, approach):
-        """Getting the diameter of the NearEarthObject."""
+        """Get the diameter of the NearEarthObject."""
         return approach.neo.diameter
 
 
@@ -115,7 +116,7 @@ class HazardousFilter(AttributeFilter):
 
     @classmethod
     def get(cls, approach):
-        """Getting the hazardous attribute."""
+        """Get the hazardous attribute."""
         return approach.neo.hazardous
 
 
@@ -155,7 +156,6 @@ def create_filters(
     :param hazardous: Whether the NEO of a matching `CloseApproach` is potentially hazardous.
     :return: A collection of filters for use with `query`.
     """
-
     filters = []
 
     if date is not None:
