@@ -154,44 +154,44 @@ def create_filters(
     filters = []
 
     if date is not None:
-        filter = DateFilter(operator.eq, date)
-        filters.append(filter)
+        f = DateFilter(operator.eq, date)
+        filters.append(f)
 
     if start_date is not None:
-        filter = DateFilter(operator.ge, start_date)
-        filters.append(filter)
+        f = DateFilter(operator.ge, start_date)
+        filters.append(f)
 
     if end_date is not None:
-        filter = DateFilter(operator.le, end_date)
-        filters.append(filter)
+        f = DateFilter(operator.le, end_date)
+        filters.append(f)
 
     if distance_min is not None:
-        filter = DistanceFilter(operator.ge, distance_min)
-        filters.append(filter)
+        f = DistanceFilter(operator.ge, distance_min)
+        filters.append(f)
 
     if distance_max is not None:
-        filter = DistanceFilter(operator.le, distance_max)
-        filters.append(filter)
+        f = DistanceFilter(operator.le, distance_max)
+        filters.append(f)
 
     if velocity_min is not None:
-        filter = VelocityFilter(operator.ge, velocity_min)
-        filters.append(filter)
+        f = VelocityFilter(operator.ge, velocity_min)
+        filters.append(f)
 
     if velocity_max is not None:
-        filter = VelocityFilter(operator.le, velocity_max)
-        filters.append(filter)
+        f = VelocityFilter(operator.le, velocity_max)
+        filters.append(f)
 
     if diameter_min is not None:
-        filter = DiameterFilter(operator.ge, diameter_min)
-        filters.append(filter)
+        f = DiameterFilter(operator.ge, diameter_min)
+        filters.append(f)
 
     if diameter_max is not None:
-        filter = DiameterFilter(operator.le, diameter_max)
-        filters.append(filter)
+        f = DiameterFilter(operator.le, diameter_max)
+        filters.append(f)
 
     if hazardous is not None:
-        filter = HazardousFilter(operator.eq, hazardous)
-        filters.append(filter)
+        f = HazardousFilter(operator.eq, hazardous)
+        filters.append(f)
 
     return filters
 

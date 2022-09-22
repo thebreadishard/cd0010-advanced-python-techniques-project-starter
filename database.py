@@ -103,8 +103,8 @@ class NEODatabase:
         """
         for approach in self._approaches:
             flag = True
-            for filter in filters:
-                if not filter(approach):
+            for f in filters:
+                if not f(approach):
                     flag = False
                     break
             if flag:

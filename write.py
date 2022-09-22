@@ -11,6 +11,7 @@ extension determines which of these functions is used.
 You'll edit this file in Part 4.
 """
 
+
 def write_to_csv(results, filename):
     """Write an iterable of `CloseApproach` objects to a CSV file.
 
@@ -40,6 +41,7 @@ def write_to_csv(results, filename):
                 'potentially_hazardous': result.neo.hazardous
             })
 
+
 def write_to_json(results, filename):
     """Write an iterable of `CloseApproach` objects to a JSON file.
 
@@ -55,7 +57,6 @@ def write_to_json(results, filename):
     results_dict = []
 
     for result in results:
-
         result_dict = {
             'datetime_utc': result.time_str,
             'distance_au': result.distance,

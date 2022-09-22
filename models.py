@@ -85,7 +85,11 @@ class CloseApproach:
     def __init__(self, designation, time, distance=0.0, velocity=0.0, neo=None):
         """Create a new `CloseApproach`.
 
-        :param info: A dictionary of excess keyword arguments supplied to the constructor.
+        :param designation: the designation of the applicable NEO.
+        :param time: the time of the close approach.
+        :param distance: the distance of the close approach.
+        :param velocity: the velocity of the close approach.
+        :param neo: the NEO object associated with the CloseApproach.
         """
         self._designation = designation
         self.time = cd_to_datetime(time)
