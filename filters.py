@@ -16,8 +16,8 @@ iterator.
 
 You'll edit this file in Tasks 3a and 3c.
 """
-import operator
 import itertools
+import operator
 
 
 class UnsupportedCriterionError(NotImplementedError):
@@ -39,6 +39,7 @@ class AttributeFilter:
     Concrete subclasses can override the `get` classmethod to provide custom
     behavior to fetch a desired attribute from the given `CloseApproach`.
     """
+
     def __init__(self, op, value):
         """Construct a new `AttributeFilter` from an binary predicate and a reference value.
 
@@ -72,32 +73,42 @@ class AttributeFilter:
     def __repr__(self):
         return f"{self.__class__.__name__}(op=operator.{self.op.__name__}, value={self.value})"
 
+
 class DateFilter(AttributeFilter):
     """A subclass for filters on dates."""
+
     @classmethod
     def get(cls, approach):
         return approach.time.date()
 
+
 class DistanceFilter(AttributeFilter):
     """A subclass for filters on distance."""
+
     @classmethod
     def get(cls, approach):
         return approach.distance
 
+
 class VelocityFilter(AttributeFilter):
     """A subclass for filters on velocity."""
+
     @classmethod
     def get(cls, approach):
         return approach.velocity
 
+
 class DiameterFilter(AttributeFilter):
     """A subclass for filters on diameter."""
+
     @classmethod
     def get(cls, approach):
         return approach.neo.diameter
 
+
 class HazardousFilter(AttributeFilter):
     """A subclass for the filter on hazardous."""
+
     @classmethod
     def get(cls, approach):
         return approach.neo.hazardous
@@ -155,16 +166,16 @@ def create_filters(
         filters.append(filter)
 
     if distance_min is not None:
-       filter = DistanceFilter(operator.ge, distance_min)
-       filters.append(filter)
+        filter = DistanceFilter(operator.ge, distance_min)
+        filters.append(filter)
 
     if distance_max is not None:
         filter = DistanceFilter(operator.le, distance_max)
         filters.append(filter)
 
     if velocity_min is not None:
-       filter = VelocityFilter(operator.ge, velocity_min)
-       filters.append(filter)
+        filter = VelocityFilter(operator.ge, velocity_min)
+        filters.append(filter)
 
     if velocity_max is not None:
         filter = VelocityFilter(operator.le, velocity_max)
