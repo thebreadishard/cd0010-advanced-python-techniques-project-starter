@@ -79,6 +79,7 @@ class DateFilter(AttributeFilter):
 
     @classmethod
     def get(cls, approach):
+        """Getting the date at the time of the approach."""
         return approach.time.date()
 
 
@@ -87,6 +88,7 @@ class DistanceFilter(AttributeFilter):
 
     @classmethod
     def get(cls, approach):
+        """Getting the distance at the time of the approach."""
         return approach.distance
 
 
@@ -95,6 +97,7 @@ class VelocityFilter(AttributeFilter):
 
     @classmethod
     def get(cls, approach):
+        """Getting the velocity at the time of the approach."""
         return approach.velocity
 
 
@@ -103,6 +106,7 @@ class DiameterFilter(AttributeFilter):
 
     @classmethod
     def get(cls, approach):
+        """Getting the diameter of the NearEarthObject."""
         return approach.neo.diameter
 
 
@@ -111,6 +115,7 @@ class HazardousFilter(AttributeFilter):
 
     @classmethod
     def get(cls, approach):
+        """Getting the hazardous attribute."""
         return approach.neo.hazardous
 
 
